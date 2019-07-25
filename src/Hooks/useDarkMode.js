@@ -3,13 +3,13 @@ import {useLocalStorage} from './useLocalStorage'
 
 
 const useDarkMode = () => {
-    const [darkMode, setDarkMode] = useLocalStorage("false");
+    const [darkMode, setDarkMode] = useLocalStorage("true");
     // console.log(darkMode)
   
   
     useEffect( () =>  {
         //if state is true then do next step
-    if (darkMode === "true") {
+    if (darkMode) {
       document.querySelector("body").classList.add("dark-mode")
       // added "dark-mode" css styling to variable backgroundColor
       //logged for sanity check
@@ -25,7 +25,7 @@ const useDarkMode = () => {
     }
 
     },[darkMode])
-    
+
     return[darkMode,  setDarkMode]
 };
 
