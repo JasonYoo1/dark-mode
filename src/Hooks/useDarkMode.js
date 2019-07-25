@@ -2,23 +2,31 @@ import React, { useState, useEffect } from "react";
 import {useLocalStorage} from './useLocalStorage'
 
 
-export const useDarkMode = () => {
-    const [dark, setDark] = useLocalStorage("false");
-    console.log(dark)
+const useDarkMode = () => {
+    const [darkMode, setDarkMode] = useLocalStorage("false");
+    // console.log(darkMode)
   
   
     useEffect( () =>  {
-    if (dark == 'true') {
-      var backgroundColor = document.querySelector("body")
+        //if state is true then do next step
+    if (darkMode === "true") {
+      document.querySelector("body").classList.add("dark-mode")
+      // added "dark-mode" css styling to variable backgroundColor
+      //logged for sanity check
       console.log("dark is true")
-      backgroundColor.classList.add("dark-mode")
     }
     else {
-     var backgroundColor = document.querySelector("body")
+    //set body to variable backgroundColor so I could grab the whole thing.
+    document.querySelector("body").classList.remove("dark-mode")
+     // added "dark-mode" css styling to variable backgroundColor
       console.log("dark is not true")
-      backgroundColor.classList.remove("dark-mode")
+      //logged for sanity check
   
     }
-      return(dark,  setDark)
-      
-    }, [dark])};
+
+    },[darkMode])
+    
+    return[darkMode,  setDarkMode]
+};
+
+    export default useDarkMode;

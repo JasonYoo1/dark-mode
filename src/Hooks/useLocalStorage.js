@@ -12,17 +12,16 @@ export const useLocalStorage = (key, initialValue) => {
     // Parse and return stored json or, if undefined, return initialValue
     return item ? JSON.parse(item) : initialValue;
   });
-
-  return [storedValue];
-};
-
-const setValue = value => {
+  const setValue = value => {
     // Save state
     setStoredValue(value);
     // Save to local storage
     window.localStorage.setItem(key, JSON.stringify(value));
     
-
-
-    return [storedValue, setValue]
   };
+
+  return [storedValue, setValue]
+
+};
+
+
